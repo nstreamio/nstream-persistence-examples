@@ -1,0 +1,51 @@
+plugins {
+    id 'application'
+    id 'checkstyle'
+}
+
+checkstyle {
+    toolVersion = property('checkstyle.version')
+}
+
+checkstyleMain
+        .exclude('*module-info*')
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.swimos', name: 'swim-api', version: property('swim.version')
+    implementation group: 'org.swimos', name: 'swim-server', version: property('swim.version')
+    implementation group: 'io.nstream', name: 'nstream-persist-api', version: property('nstream.version')
+    implementation group: 'io.nstream', name: 'nstream-persist-kernel', version: property('nstream.version')
+    implementation group: 'io.nstream', name: 'nstream-store-ignite', version: property('nstream.version')
+    implementation project(':example-common')
+}
+
+application {
+    mainModule = 'nstream.persist.example.ignite.standalone'
+    mainClass = 'nstream.persist.example.ignite.standalone.ExamplePlane'
+    applicationDefaultJvmArgs = [
+            "--add-opens=java.base/jdk.internal.misc=ALL-UNNAMED",
+            "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED",
+            "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED",
+            "--add-opens=java.management/com.sun.jmx.mbeanserver=ALL-UNNAMED",
+            "--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED",
+            "--add-opens=java.base/sun.reflect.generics.reflectiveObjects=ALL-UNNAMED",
+            "--add-opens=jdk.management/com.sun.management.internal=ALL-UNNAMED",
+            "--add-opens=java.base/java.io=ALL-UNNAMED",
+            "--add-opens=java.base/java.nio=ALL-UNNAMED",
+            "--add-opens=java.base/java.util=ALL-UNNAMED",
+            "--add-opens=java.base/java.lang=ALL-UNNAMED",
+            "--add-opens=java.logging/java.util.logging=ALL-UNNAMED",
+            "-Xms512m",
+            "-Xmx512m",
+    ]
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
