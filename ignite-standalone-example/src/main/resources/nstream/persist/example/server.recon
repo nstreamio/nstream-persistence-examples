@@ -1,0 +1,24 @@
+@kernel(class: "nstream.persist.kernel.PersistenceKernel")
+@web(port: 9001) {
+    space: "example"
+    @websocket {
+        serverCompressionLevel: 0
+        # -1 = default; 0 = off; 1-9 = deflate level
+        clientCompressionLevel: 0
+        # -1 = default; 0 = off; 1-9 = deflate level
+    }
+}
+example: @fabric {
+    @plane(class: "nstream.persist.example.ignite.standalone.ExamplePlane")
+    @node {
+        pattern: "/example/:id"
+        @agent(class: "nstream.persist.example.ExampleAgent")
+    }
+    exampleStore: @store {
+        implName: "Ignite"
+        parameters: {
+            configurationPath: "$IGNITE_CONFIG"
+            activateCluster: true
+        }
+    }
+}

@@ -1,0 +1,34 @@
+plugins {
+    id 'application'
+    id 'checkstyle'
+}
+
+checkstyle {
+    toolVersion = property('checkstyle.version')
+}
+
+checkstyleMain
+        .exclude('*module-info*')
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.swimos', name: 'swim-api', version: property('swim.version')
+    implementation group: 'org.swimos', name: 'swim-server', version: property('swim.version')
+    implementation group: 'io.nstream', name: 'nstream-persist-api', version: property('nstream.version')
+    implementation group: 'io.nstream', name: 'nstream-persist-kernel', version: property('nstream.version')
+    implementation group: 'io.nstream', name: 'nstream-store-cassandra', version: property('nstream.version')
+    implementation project(':example-common')
+}
+
+application {
+    mainModule = 'nstream.persist.example.cassandra'
+    mainClass = 'nstream.persist.example.cassandra.ExamplePlane'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
