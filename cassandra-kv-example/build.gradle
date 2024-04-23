@@ -28,3 +28,8 @@ application {
     mainModule = 'nstream.persist.example.cassandra.kv'
     mainClass = 'nstream.persist.example.cassandra.kv.ExamplePlane'
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}

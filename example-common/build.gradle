@@ -18,3 +18,8 @@ dependencies {
     implementation group: 'org.swimos', name: 'swim-api', version: property('swim.version')
     implementation group: 'org.swimos', name: 'swim-server', version: property('swim.version')
 }
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
