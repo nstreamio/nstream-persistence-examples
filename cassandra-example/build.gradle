@@ -27,9 +27,3 @@ application {
     mainModule = 'nstream.persist.example.cassandra'
     mainClass = 'nstream.persist.example.cassandra.ExamplePlane'
 }
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}

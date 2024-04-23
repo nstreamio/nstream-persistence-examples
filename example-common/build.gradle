@@ -18,9 +18,3 @@ dependencies {
     implementation group: 'org.swimos', name: 'swim-api', version: property('swim.version')
     implementation group: 'org.swimos', name: 'swim-server', version: property('swim.version')
 }
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}

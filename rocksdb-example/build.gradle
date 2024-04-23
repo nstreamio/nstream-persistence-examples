@@ -28,9 +28,3 @@ application {
     mainModule = 'nstream.persist.example.rocksdb'
     mainClass = 'nstream.persist.example.rocksdb.ExamplePlane'
 }
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}

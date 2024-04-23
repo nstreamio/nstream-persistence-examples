@@ -45,12 +45,6 @@ application {
     ]
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}
-
 tasks.named('test') {
     // Use TestNG for unit tests.
     useTestNG()
