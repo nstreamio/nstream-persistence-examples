@@ -9,7 +9,7 @@
     }
 }
 example: @fabric {
-    @plane(class: "nstream.persist.example.rocksdb.snapshot.ExamplePlane")
+    @plane(class: "nstream.persist.example.rocksdb.ExamplePlane")
     @node {
         pattern: "/example/:id"
         @agent(class: "nstream.persist.example.ExampleAgent")
